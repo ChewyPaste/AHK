@@ -1,23 +1,43 @@
+#SingleInstance, force
 #MaxThreadsPerHotkey, 2
-;notepad_winid = 23432 ;notepad
-winid = 21636 ;satisfactory
+;rev1 adds autorun
+winid = 14384 ;satisfactory
 
 clickToggle = 0
 eToggle = 0
 
-XButton1::
+F1::
 
 
 clickToggle = !clickToggle
-If clickToggle
-   ;ControlSend,,kwag,ahk_pid %winid%
-   ControlClick,x909 y666,Satisfactory,,LEFT,1, D Pos
-else
-   MsgBox, rawr no toggle ,ahk_pid %winid%
+If (clickToggle){
+    ;MsgBox, test
+    ;ControlSend,,kwag,ahk_pid %winid%
+    ;ControlClick,x780 y645,Satisfactory,,LEFT,1, D Pos
+    SetControlDelay -1
+    ControlClick,x267 y220,Satisfactory,,LEFT,1, D Pos NA
+    ;698, 614
+    ;267, 220resized coords
+}
+else{
+ MsgBox, rawr
+}
+;Run, listcurrentscripts.ahk, C:\Users\ChewyPaste\Desktop\keyscripts,
 return
 
+F2::
 
-F1::
+clickToggle = !clickToggle
+If (clickToggle){
+    ControlSend,,{w down},Satisfactory,,,
+    ControlSend,,{LShift down},Satisfactory,,,
+}
+else{
+ MsgBox, rawr
+}
+return
+
+F3::
 
 eToggle = !eToggle
 If eToggle
@@ -29,6 +49,7 @@ return
 
 
 
-;Window:	464, 396
 
-ESC:: ExitApp
+F4::
+
+ExitApp
